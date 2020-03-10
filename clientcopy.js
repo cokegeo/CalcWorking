@@ -14,25 +14,25 @@ prompt.start();
 const client = new protoPackage.TheService("localhost:40000", 
 grpc.credentials.createInsecure());
 
-var a = 1;
-var b = 3;
+c = 0;
+d = 0;
 
-prompt.get([a, b], function (err, resultado) {
+prompt.get([c, d], function (err, resultado) {
   if (err) { return onErr(err); }
-  console.log('Command-line input received:');
-  console.log('  Number 1 is: ' + parseInt(a));
-  console.log('  Number 2 is: ' + parseInt(b));
+  console.log('  Number 1 is: ' + c);
+  console.log('  Number 2 is: ' + d);
 
+  var a = c;
+  var b = d;
 
   client.Add({
-    "a": a,
-    "b": b
+    "a": parseInt(a),
+    "b": parseInt(b)
   }, function(err, response) {
   
     console.log("The addition of the two numbers is " + response.result)
   
   });
-
 
 
 });
